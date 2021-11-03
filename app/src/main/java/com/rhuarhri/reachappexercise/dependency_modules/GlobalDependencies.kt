@@ -29,10 +29,10 @@ object GlobalDependencies {
     fun provideRetrofit(@ApplicationContext context : Context) : Retrofit {
         val baseURL = "https://apps-tests.s3-eu-west-1.amazonaws.com/android/"
 
-        //val cache = OnlineCache(context)
+        val cache = OnlineCache(context)
 
         return Retrofit.Builder()
-            //.client(cache.cache)
+            .client(cache.cache)
             .addConverterFactory(GsonConverterFactory.create())
             .baseUrl(baseURL)
             .build()
