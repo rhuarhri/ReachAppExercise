@@ -26,7 +26,7 @@ class MainActivityViewModel @Inject constructor(private val repo : MainActivityR
 
 }
 
-class MainActivityRepository @Inject constructor(val online : Online) {
+class MainActivityRepository @Inject constructor(var online : Online) {
 
     val productListLiveData : LiveData<List<ProductItem>> =
         Transformations.map(online.currentProductList) {found ->
