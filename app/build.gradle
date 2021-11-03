@@ -75,6 +75,8 @@ dependencies {
     androidTestImplementation "androidx.compose.ui:ui-test-junit4:$compose_version"
     debugImplementation "androidx.compose.ui:ui-tooling:$compose_version"
 
+    implementation "io.coil-kt:coil-compose:1.4.0"
+
 }
 
 kapt {

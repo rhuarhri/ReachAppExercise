@@ -24,11 +24,10 @@ object GlobalDependencies {
         return app as DependencyBase
     }
 
-    /*
     @Singleton
     @Provides
     fun provideRetrofit(@ApplicationContext context : Context) : Retrofit {
-        val baseURL = "https://apps-tests.s3-eu-west-1.amazonaws.com/android/products.json"
+        val baseURL = "https://apps-tests.s3-eu-west-1.amazonaws.com/android/"
 
         //val cache = OnlineCache(context)
 
@@ -51,6 +50,6 @@ object GlobalDependencies {
     fun provideMainActivityRepository(@ApplicationContext context : Context) : MainActivityRepository {
         val online = provideOnline(context)
         return MainActivityRepository(online)
-    }*/
+    }
 
 }

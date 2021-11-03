@@ -7,27 +7,12 @@ import androidx.lifecycle.viewModelScope
 import com.rhuarhri.reachappexercise.online.Online
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Inject
 
-class MainActivityViewModel : ViewModel() {
-
-    val repo : MainActivityRepository
+@HiltViewModel
+class MainActivityViewModel @Inject constructor(private val repo : MainActivityRepository) : ViewModel() {
 
     init {
-        val baseURL = "https://apps-tests.s3-eu-west-1.amazonaws.com/android/"
-
-        //val cache = OnlineCache(context)
-
-        val retrofit = Retrofit.Builder()
-            //.client(cache.cache)
-            .addConverterFactory(GsonConverterFactory.create())
-            .baseUrl(baseURL)
-            .build()
-
-        val online = Online(retrofit)
-        repo = MainActivityRepository(online)
         setup()
     }
 
@@ -41,7 +26,7 @@ class MainActivityViewModel : ViewModel() {
 
 }
 
-class MainActivityRepository(val online : Online) {
+class MainActivityRepository @Inject constructor(val online : Online) {
 
     val productListLiveData : LiveData<List<ProductItem>> =
         Transformations.map(online.currentProductList) {found ->
